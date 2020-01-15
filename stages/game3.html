@@ -1,0 +1,721 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Teste</title>
+	</head>
+	<body onkeypress="checar(event)" onkeyup="terminar()">
+		<style>
+
+			#explicacao {
+				position: absolute;
+				top: 30%;
+				left: 10%;
+				width: 50%;
+				font-size: 1.3em;
+			}
+
+
+			#personagem {
+				position: absolute;
+				display: block;
+				top: 10%;
+				left: 20%;
+				width: 50px;
+				height: 50px;
+				z-index: 2;
+			}
+
+			#tela, #telainicial, #telaTerceiroEstagio{
+				position: absolute;
+				top: 10px;
+				left: 100px;
+				width: 700px;
+				height: 435px;
+				border-width: 5px;
+				border-color: black;
+				border-style: solid;
+				z-index: 3;
+			}
+
+			#telainicial{
+				display: block;
+				z-index: 3;
+				background-color: grey;
+			}
+
+		
+
+			#inf {
+				position: absolute;
+				left: 900px;
+				top: 100px;
+				width: 100px;
+				height: 100px;
+			}
+
+			
+			#game_over_tela {
+				display: none;
+				position: absolute;
+				top: 5%;
+				left: 15%;
+				height: 400px;
+				width: 60%;
+				border-style: default;
+				border-radius: 10% 10% 10% 10%;
+				background-color: white;
+				z-index: 3;
+			}
+
+			#game_over, #finish {
+				display: none;
+				position: absolute;
+				top: 20%;
+				left: 30%;
+				color: red;
+				z-index: 4;
+				font-size: 3.5em;
+			}
+
+			#personagem {
+				position: absolute;
+				display: block;
+				top: 10%;
+				left: 20%;
+				width: 50px;
+				height: 50px;
+				z-index: 2;
+			}
+
+
+			#finish {
+				left: 20%;
+				color: green;
+			}
+
+			#menu, #next {
+				display: none;
+				position: absolute;
+				top: 75%;
+				left: 20%;
+				font-size: 2.5em;
+			}
+
+			#next {
+				left: 50%;
+			}
+
+
+			#x,#y, #x_valor, #y_valor{
+				position: absolute;
+				left: 10%;
+				top: 10%;
+			}
+
+
+			#y, #y_valor{
+				top: 50%;
+			}
+
+			#x_valor, #y_valor{
+				left: 50%;
+			}
+
+
+			/*Segundo estágio*/
+			#segundo{
+				display: block;
+				position: absolute;
+				top: 85%;
+				left: 80%;
+				width: 15%;
+				height: 35px;
+				border-style: default;
+				border-radius: 15% 15% 15% 15%;
+			}
+
+			#telaTerceiroEstagio{
+				display: none;
+				z-index: 3;
+				background-color: #e6e6e6;
+			}
+
+			#grass1, #grass2, #grass3, #grass4, #grass5, #grass6, #grass7, #grass8, #grass9, #grass10, #grass11, #grass12, #grass13, #grass14, #grass15, #grass16, #grass17, #grass18, #grass19, #grass20, #grass21, #grass22, #grass23, #grass24, #grass25, #grass26, #grass27, #grass28, #grass29, #grass30, #grass31, #grass32, #grass33, #grass34, #grass35,#cortador, #ant, #ant2, #ant3 {
+				position: absolute;
+				left: 0%;
+				top: 0%;
+				height: 100px;
+				z-index: -1;
+			}
+
+			#cortador {
+				left: 0%;
+				top: 19%;
+				z-index: 1;
+			}
+
+			#grass2{
+				left: 14.2%;
+			}
+
+			#grass3{
+				left: 28.4%;
+			}
+
+			#grass4{
+				left: 35%;
+			}
+
+			#grass5{
+				left: 49%;
+			}
+
+			#grass6{
+				left: 63%;
+			}
+
+			#grass7 {
+				left: 77%;
+			}
+
+			#grass8, #grass9, #grass10, #grass11, #grass12, #grass13, #grass14 {
+				top: 19%;
+			}
+
+			#grass9{
+				left: 14.2%;
+			}
+
+			#grass10{
+				left: 28.4%;
+			}
+
+			#grass11{
+				left: 35%;
+			}
+
+			#grass12{
+				left: 49%;
+			}
+
+			#grass13{
+				left: 63%;
+			}
+
+			#grass14 {
+				left: 77%;
+			}
+
+			#grass15, #grass16, #grass17, #grass18, #grass19, #grass20, #grass21{
+				top: 38%;
+			}
+
+			#grass16{
+				left: 14.2%;
+			}
+
+			#grass17{
+				left: 28.4%;
+			}
+
+			#grass18{
+				left: 35%;
+			}
+
+			#grass19 {
+				left: 49%;
+			}
+
+			#grass20{
+				left: 63%;
+			}
+
+			#grass21 {
+				left: 77%;
+			}
+
+			#grass22, #grass23, #grass24, #grass25, #grass26, #grass27, #grass28 {
+				top: 57%;
+			}
+
+			#grass23{
+				left: 14.2%;
+			}
+
+			#grass24{
+				left: 28.4%;
+			}
+
+			#grass25{
+				left: 35%;
+			}
+
+			#grass26{
+				left: 49%;
+			}
+
+			#grass27{
+				left: 63%;
+			}
+
+			#grass28 {
+				left: 77%;
+			}
+
+			#grass29, #grass30, #grass31, #grass32, #grass33, #grass34, #grass35, #ant, #ant2, #ant3{
+				top: 77%;
+			}
+
+
+			#grass30{
+				left: 14.2%;
+			}
+
+			#grass31{
+				left: 28.4%;
+			}
+
+			#grass32{
+				left: 35%;
+			}
+
+			#grass33{
+				left: 49%;
+			}
+
+			#grass34{
+				left: 63%;
+			}
+
+			#grass35, #ant, #ant2, #ant3 {
+				left: 77%;
+			}
+
+			#ant {
+				top: 60%;
+			}
+
+			#ant, #ant2, #ant3 {
+				z-index: 0;
+			}
+
+			#ant3 {
+				top: 32%;
+			}
+
+			#start, #final {
+				position: absolute;
+				top: 19%;
+				left: 3%;
+				width: 7%;
+				height: 12px;
+				z-index: 0;
+				background-color: blue;
+			}
+
+			#vida {
+				position: absolute;
+				top: 5%;
+				left: 75%;
+				width: 10%;
+				height: 7%;
+				z-index: 2;
+			}
+
+			#heart {
+				position: absolute;
+				left: 5%;
+				width: 45%;
+			}
+
+			#life {
+				position: absolute;
+				left: 60%;
+				width: 50%;
+				top: -70%;
+				height: 100%;
+				font-size: 1.5em;
+				color: white;
+			}
+
+			#final {
+				top: 87%;
+				left: 81%;
+				background-color:red;
+			}
+
+		</style>
+		<script type="text/javascript">
+			var personagem = {x: 20, y: 10, vivo: true, vida: 100};
+			var cortador = {x: 0, y: 19};
+			var formiga = {x: 77, y: 60, direcao:0};
+			var formiga2 = {x: 77, y: 77, direcao: 0};
+			var formiga3 = {x: 77, y: 32, direcao: 0};
+			var timer = 60;
+			var tempo = 0;
+			var pontos = 0;
+			var qtde = 0;
+			//Segundo estágio
+
+			function checar(event){
+				var key = event.which || event.keyCode;
+
+				if(key == 119 || key == 87){
+					moverCima();
+				} else if(key == 97 || key == 65){
+					moverEsquerda();
+				} else if(key == 100 || key == 68){
+					moverDireita();
+				} else if(key == 115 || key == 83){
+					moverBaixo();
+				}
+			}
+
+			function pegarCortador(){
+				if((personagem.x >= cortador.x & personagem.x < cortador.x+5) & (personagem.y <= cortador.y & personagem.y >= cortador.y-5)){
+					cortador.y = personagem.y+10;
+					personagem.y = personagem.y-5;
+					document.getElementById("cortador").style.top = cortador.y+"%";
+				}
+
+				if(cortador.y > 72 & cortador.x < 79){
+					cortador.y = 10;
+					cortador.x += 13;
+					document.getElementById("cortador").style.top = cortador.y+"%";
+					document.getElementById("cortador").style.left = cortador.x+"%";
+					qtde++;
+					console.log("Qtde: "+qtde);
+				}
+			}
+
+			function iniciarTerceiroEstagio(){
+				document.getElementById("telainicial").style.display = "none";
+				document.getElementById("telaTerceiroEstagio").style.display = "block";
+
+
+				tempo = 0;
+
+				setInterval(checarMorte, 1000);
+				setInterval(pegarCortador,250);
+			}
+
+			
+			//A morte só acontecerá quando o personagem tiver o atributo vida = 0.
+			function checarMorte(){
+				tempo = tempo+1;
+
+				if(timer > 0){
+					timer = timer - 1;
+				}
+
+				document.getElementById("life").innerHTML = personagem.vida;
+
+				//Movimento das formigas através do cenário
+				if(tempo % 3 == 0){
+					if(formiga2.x > 10 && formiga2.direcao == 0){
+						formiga2.x-=5;
+						document.getElementById("ant2").style.left=formiga2.x+"%";
+					}
+
+					if(formiga2.x <= 10){
+						formiga2.direcao = 1;
+						document.getElementById("ant2").src = "../img/ant/ant.png";
+					}
+
+					if(formiga2.direcao == 1 & formiga2.y > 10){
+						formiga2.y-=5;
+						document.getElementById("ant2").style.top=formiga2.y+"%";
+					}
+
+					if(formiga2.y <= 10){
+						formiga2.direcao = 2;
+						document.getElementById("ant2").src = "../img/ant/ant2.png";
+					}
+
+					if(formiga2.direcao == 2 && formiga2.x < 70){
+						formiga2.x+=5;
+						document.getElementById("ant2").style.left=formiga2.x+"%";
+					}
+
+					if(formiga2.x >= 70 && formiga2.direcao == 2){
+						formiga2.direcao = 3;
+						document.getElementById("ant2").src = "../img/ant/ant4.png";
+					}
+
+					if(formiga2.y < 63){
+						formiga2.y+=5;
+						document.getElementById("ant2").style.top=formiga2.y+"%";
+					}
+
+					if(formiga2.y >= 63 && formiga2.direcao == 3){
+						formiga2.direcao = 0;
+						document.getElementById("ant2").src = "../img/ant/ant4.png";
+					}
+				}
+
+				//Movimento formiga 3
+				if(formiga3.y > 5 && formiga3.direcao == 0){
+					formiga3.y-=5;
+					document.getElementById("ant3").style.top=formiga3.y+"%";
+				}
+
+				if(formiga3.y <= 5){
+					formiga3.direcao=1;
+					document.getElementById("ant3").src = "../img/ant/ant4.png";
+				}
+
+				if(formiga3.direcao == 1 && formiga3.x > 5){
+					formiga3.x--;
+					document.getElementById("ant3").style.left = formiga3.x+"%";
+				}
+
+				if(formiga3.x <= 5){
+					formiga3.direcao = 2;
+					document.getElementById("ant3").src = "../img/ant/ant3.png";
+				}
+
+				if(formiga3.direcao == 2 && formiga3.y < 77){
+					formiga3.y += 3;
+					document.getElementById("ant3").style.top = formiga3.y+"%";
+				}
+
+				if(formiga3.y >= 77){
+					formiga3.direcao = 3;
+					document.getElementById("ant3").src = "../img/ant/ant2.png";
+				}
+
+				if(formiga3.direcao == 3 && formiga3.x < 65){
+					formiga3.x += 5;
+					document.getElementById("ant3").style.left = formiga3.x+"%";
+				}
+
+				if(formiga3.x >= 65 && formiga3.direcao == 3){
+					formiga3.direcao = 0;
+					document.getElementById("ant3").src = "../img/ant/ant.png";
+				}
+
+				if(tempo % 2 == 0){
+
+
+					if(formiga.y > 15 && formiga.direcao == 0){
+						formiga.y-=5;
+						document.getElementById("ant").style.top=formiga.y+"%";
+					}
+
+					if(formiga.y < 17 & formiga.x > 3 && formiga.direcao == 0){
+						formiga.x -= 5;
+						document.getElementById("ant").src="../img/ant/ant4.png";
+						document.getElementById("ant").style.left = formiga.x+"%";
+					}
+
+					if(formiga.x <= 3 && formiga.direcao == 0){
+						document.getElementById("ant").src = "../img/ant/ant2.png";
+						formiga.x += 5;
+						document.getElementById("ant").style.left = formiga.x+"%";
+						formiga.direcao++;
+					}
+
+					if(formiga.x < 50 & formiga.y < 17 & formiga.direcao == 1){
+						formiga.x += 5;
+						document.getElementById("ant").style.left = formiga.x+"%";
+					}	
+
+					if(formiga.x >= 50 & formiga.y <= 75 & formiga.direcao == 1){
+						formiga.y += 5;
+						document.getElementById("ant").src="../img/ant/ant3.png";
+						document.getElementById("ant").style.top = formiga.y+"%";
+					}
+
+					if(formiga.y > 75){
+						document.getElementById("ant").src="../img/ant/ant.png";
+						formiga.direcao--;
+					}
+				}
+
+				if(pontos == 28){
+					document.getElementById("game_over_tela").style.display = "block";
+					document.getElementById("finish").style.display = "block";
+					document.getElementById("next").style.display = "block";
+					document.getElementById("menu").style.display = "block";
+				}
+
+				if(personagem.vivo == false){
+					document.getElementById("game_over").style.display="block";
+					document.getElementById("game_over_tela").style.display = "block";
+					document.getElementById("menu").style.display = "block";
+				}
+
+
+				/*Personagem perdendo vida com a interação com os antagonistas*/
+				if((((personagem.y+9) > formiga.y) & (personagem.y < (formiga.y+20))) & ((personagem.x+4) > formiga.x) & (personagem.x < (formiga.x+8))){
+					personagem.vida-=5;
+				}
+
+				if((((personagem.y+9) > formiga2.y) & (personagem.y < (formiga2.y+20))) & ((personagem.x+4) > formiga2.x) & (personagem.x < (formiga2.x+8))){
+					personagem.vida-=5;
+				}
+
+				if((((personagem.y+9) > formiga3.y) & (personagem.y < (formiga3.y+20))) & ((personagem.x+4) > formiga3.x) & (personagem.x < (formiga3.x+8))){
+					personagem.vida-=5;
+				}
+			}
+
+
+			function moverDireita(){
+				if(personagem.x < 94 & personagem.vivo == true){
+					personagem.x = personagem.x+1;
+				document.getElementById("personagem").style.left = personagem.x+"%";
+				document.getElementById("x_valor").innerHTML = personagem.x;
+				document.getElementById("y_valor").innerHTML = personagem.y;
+				}
+
+				if(personagem.x % 2 == 0){
+					document.getElementById("personagem").src = "../img/kaline_direita_1.png";
+				} else {
+					document.getElementById("personagem").src = "../img/kaline_direita_2.png";
+				}
+
+			}
+
+			function moverEsquerda(){
+
+				if(personagem.x > 0 & personagem.vivo == true){
+					personagem.x = personagem.x-1;
+					document.getElementById("personagem").style.left = personagem.x+"%";
+					document.getElementById("x_valor").innerHTML = personagem.x;
+					document.getElementById("y_valor").innerHTML = personagem.y;
+				}
+
+				if(personagem.x % 2 == 0){
+					document.getElementById("personagem").src = "../img/kaline_esquerda_1.png";
+				} else {
+					document.getElementById("personagem").src = "../img/kaline_esquerda_2.png";
+				}
+
+			}
+
+			function moverCima(){
+
+				if(personagem.y > 0 & personagem.vivo == true){
+					personagem.y = personagem.y-1;
+					document.getElementById("personagem").style.top = personagem.y+"%";
+					document.getElementById("x_valor").innerHTML = personagem.x;
+					document.getElementById("y_valor").innerHTML = personagem.y;
+				}
+
+				if(personagem.y % 2 == 0){
+					document.getElementById("personagem").src = "../img/kaline_tras_direita.png";
+				} else {
+					document.getElementById("personagem").src = "../img/kaline_tras_esquerda.png";
+				}
+			}
+
+
+			function moverBaixo(){
+				if(personagem.y < 90 & personagem.vivo == true){
+					personagem.y = personagem.y+1;
+					document.getElementById("personagem").style.top = personagem.y+"%";
+					document.getElementById("x_valor").innerHTML = personagem.x;
+					document.getElementById("y_valor").innerHTML = personagem.y;
+				}
+
+				if(personagem.y % 2 == 0){
+					document.getElementById("personagem").src = "../img/kaline_frente_direita.png";
+				} else {
+					document.getElementById("personagem").src = "../img/kaline_frente_esquerda.png";
+				}
+			}
+
+
+			function terminar(){
+				document.getElementById("personagem").src = "../img/kaline.png";
+			}
+
+			function alerta(){
+				document.getElementById("personagem").style.backgroundColor = "black";
+			}
+
+			function alerta2(){
+				document.getElementById("personagem").style.backgroundColor = "red";
+			}
+
+			
+		</script>
+		<div id="telainicial">
+			<center><h2>Estágio 3</h2></center>
+			<p id="explicacao">Guie o cortador de grama até a marca vermelha. Mas cuidado, não toque nas formigas.</p>
+
+			<button id="segundo" onclick="iniciarTerceiroEstagio()">Começar</button>
+		</div>
+
+		
+
+		<div id="telaTerceiroEstagio">
+			<div id="game_over_tela">
+				<p id="game_over">GAME OVER</p>
+				<p id="finish">YOU WIN</p>
+				<a id="menu" href="../index.html">Menu</a>
+				<a id="next" href="#">Próximo</a>
+			</div>
+
+			<div id="vida">
+				<img src="../img/heart.png" id="heart">
+				<p id="life"></p>
+			</div>
+
+			<!--Infraestrutura-->
+			<img src="../img/cortador.png" id="cortador">
+
+			<img src="../img/grass3.jpg" id="grass1">
+			<img src="../img/grass3.jpg" id="grass2">
+			<img src="../img/grass3.jpg" id="grass3">
+			<img src="../img/grass3.jpg" id="grass4">
+			<img src="../img/grass3.jpg" id="grass5">
+			<img src="../img/grass3.jpg" id="grass6">
+			<img src="../img/grass3.jpg" id="grass7">
+			<img src="../img/grass3.jpg" id="grass8">
+			<img src="../img/grass3.jpg" id="grass9">
+			<img src="../img/grass3.jpg" id="grass10">
+			<img src="../img/grass3.jpg" id="grass11">
+			<img src="../img/grass3.jpg" id="grass12">
+			<img src="../img/grass3.jpg" id="grass13">
+			<img src="../img/grass3.jpg" id="grass14">
+			<img src="../img/grass3.jpg" id="grass15">
+			<img src="../img/grass3.jpg" id="grass16">
+			<img src="../img/grass3.jpg" id="grass17">
+			<img src="../img/grass3.jpg" id="grass18">
+			<img src="../img/grass3.jpg" id="grass19">
+			<img src="../img/grass3.jpg" id="grass20">
+			<img src="../img/grass3.jpg" id="grass21">
+			<img src="../img/grass3.jpg" id="grass22">
+			<img src="../img/grass3.jpg" id="grass23">
+			<img src="../img/grass3.jpg" id="grass24">
+			<img src="../img/grass3.jpg" id="grass25">
+			<img src="../img/grass3.jpg" id="grass26">
+			<img src="../img/grass3.jpg" id="grass27">
+			<img src="../img/grass3.jpg" id="grass28">
+			<img src="../img/grass3.jpg" id="grass29">
+			<img src="../img/grass3.jpg" id="grass30">
+			<img src="../img/grass3.jpg" id="grass31">
+			<img src="../img/grass3.jpg" id="grass32">
+			<img src="../img/grass3.jpg" id="grass33">
+			<img src="../img/grass3.jpg" id="grass34">
+			<img src="../img/grass3.jpg" id="grass35">
+			<div id="start"></div>
+			<div id="final"></div>
+
+			<img src="../img/ant/ant.png" id="ant">
+			<img src="../img/ant/ant4.png" id="ant2">
+			<img src="../img/ant/ant.png" id="ant3">
+
+			<img src="../img/kaline.png" id="personagem">
+		</div>
+
+			<div id="inf">
+				<p id="x">X</p>
+				<p id="x_valor">0</p>
+				<p id="y">Y</p>
+				<p id="y_valor">0</p>
+			</div>
+	</body>
+</html>

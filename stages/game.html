@@ -1,10 +1,73 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Teste</title>
+		<title>Fase 1 - Jogo da Cidadania</title>
 	</head>
-	<body>
+	<body onload="initio()" onkeypress="checar(event)" onkeyup="terminar()">
 		<style>
+			#explicacao {
+				position: absolute;
+				top: 30%;
+				left: 10%;
+				width: 50%;
+				font-size: 1.3em;
+			}
+
+			#segundo{
+				display: block;
+				position: absolute;
+				top: 85%;
+				left: 80%;
+				width: 15%;
+				height: 35px;
+				border-style: default;
+				border-radius: 15% 15% 15% 15%;
+			}
+
+
+
+			#game_over_tela {
+				display: none;
+				position: absolute;
+				top: 5%;
+				left: 15%;
+				height: 400px;
+				width: 60%;
+				border-style: default;
+				border-radius: 10% 10% 10% 10%;
+				background-color: white;
+				z-index: 3;
+			}
+
+			#game_over, #finish {
+				display: none;
+				position: absolute;
+				top: 20%;
+				left: 30%;
+				color: red;
+				z-index: 4;
+				font-size: 3.5em;
+			}
+
+			#finish {
+				left: 20%;
+				color: green;
+			}
+
+			#menu, #next {
+				display: none;
+				position: absolute;
+				top: 75%;
+				left: 20%;
+				font-size: 2.5em;
+			}
+
+			#next {
+				left: 50%;
+			}
+
+
+
 			#cima, #baixo, #esquerda, #direita, #personagem{
 				position: absolute;
 				top: 670px;
@@ -91,7 +154,7 @@
 				z-index: 0;
 			}
 
-			#tela, #telainicial, #telaSegundoEstagio{
+			#tela, #telainicial {
 				position: absolute;
 				top: 10px;
 				left: 100px;
@@ -109,20 +172,7 @@
 				background-color: grey;
 			}
 
-			#boy, #girl{
-				display: block;
-				z-index: 4;
-				position: absolute;
-				top: 20%;
-				left: 15%;
-				width: 25%;
-			}
-
-			#girl{
-				top: 23%;
-				left: 55%;
-				width: 33%;
-			}
+			
 
 			#tree{
 				position: absolute;
@@ -192,48 +242,9 @@
 				z-index: -1;
 			}
 
-			#endgame{
-				display: none;
-				position: absolute;
-				left: 20%;
-				top: 17%;
-				width: 60%;
-				height: 60%;
-				background-color: grey;
-				z-index: 4;
-			}
+			
 
-			#gameover, #youwin{
-				display: block;
-				position: absolute;
-				top: 10%;
-				left: 5%;
-			}
-
-			#youwin{
-				display: none;
-				width: 70%;
-				left: 15%;
-			}
-
-			#home, #return, #next{
-				display: block;
-				position: absolute;
-				top: 60%;
-				left: 15%;
-				width: 20%;
-				height: 20%;
-			}
-
-			#return{
-				left: 45%;
-			}
-
-			#next{
-				display: none;
-				left: 75%;
-			}
-
+			
 
 			#x,#y, #x_valor, #y_valor, #timer{
 				position: absolute;
@@ -253,22 +264,6 @@
 				left: 80%;
 			}
 
-			/*Segundo estágio*/
-			#segundo{
-				display: block;
-				position: absolute;
-				top: 80%;
-				left: 20%;
-				width: 15%;
-				height: 15%;
-				background-color: yellow;
-			}
-
-			#telaSegundoEstagio{
-				display: none;
-				z-index: 3;
-				background-color: #e6e6e6;
-			}
 
 			#garbage0, #garbage1,#garbage2, #garbage3, #garbage4, #garbage5, #garbage6, #garbage7, #garbage8, #garbage9, #garbage10, #garbage11,#garbage12, #garbage13, #garbage14, #garbage15, #garbage16, #garbage17, #garbage18, #garbage19, #garbage20, #garbage21,#garbage22, #garbage23, #garbage24, #garbage25, #garbage26, #garbage27, #garbage28, #garbage29
 			{
@@ -296,9 +291,10 @@
 			var mulher2 = {x: 30, y: 86, display: true, volta:0};
 			var homem = {x: 25, y: 0, volta:0};
 			var homem2 = {x:80, y:86, display: true};
-			var senhora = {x: 40, y: 0, display: true};
+			var senhora = {x: 40, y: 0, display: true, atravessando:false};
 			var senhora2 = {x: 80, y: 0, display: false, atravessando: false};
 			var senhora3 = {x: 75, y: 86, display: false, atravessando: false};
+			var senhorasAtravessadas = 0;
 			var arvore = {x: 5, y: 30};
 			var arvore2 = {x: 75, y: 10};
 			var carro = {x: 50, y: 84};
@@ -309,47 +305,8 @@
 			var carro5 = {x: 63, y: 0};
 			var carro6 = {x: 63, y: 0};
 			var carro7 = {x: 63, y: 0};
-			var timer, timer2, timer3, timerCarro;
+			var timer2, timer3, timerCarro;
 			var tempo = 0;
-
-			//Segundo estágio
-
-			function iniciarSegundoEstagio(){
-				document.getElementById("boy").style.display = "none";
-				document.getElementById("girl").style.display = "none";
-				document.getElementById("telainicial").style.display = "none";
-				document.getElementById("telaSegundoEstagio").style.display = "block";
-				/*document.getElementById("garbage1").style.display = "block";
-				document.getElementById("garbage2").style.display = "block";*/
-
-
-				tempo = 0;
-
-				setInterval(gerarLixo, 1000);
-
-			}
-
-			function gerarLixo(){
-				var t = "garbage";
-				var lixos = new Array();
-
-				if(tempo < 30){
-					var k = tempo-1;
-					t = "garbage"+k;
-					var lixo = {x:20, y:50};
-					lixo.x = Math.random()*50;
-					lixo.y = Math.random()*90;
-
-					document.getElementById(t).style.top = lixo.y+"%";
-					document.getElementById(t).style.left = lixo.x+"%";
-					document.getElementById(t).style.display = "block";
-					lixos[tempo] = lixo;
-					console.log(lixos[tempo]);
-				}
-				
-			}
-
-
 
 			function voltar(){
 				window.location.href = "game.html";
@@ -357,25 +314,51 @@
 				alert("Clicado!");
 			}
 
-			function iniciarGirl(){
-				alert("Clicado girl");
-				document.getElementById("boy").style.display = "none";
-				document.getElementById("girl").style.left = "30%";
-				document.getElementById("girl").style.width = "50%";
-				document.getElementById("girl").style.display = "none";
-				document.getElementById("telainicial").style.display = "none";
-				tempo = 0;
+			function checar(event){
+				var key = event.which || event.keyCode;
+
+				if(key == 119 || key == 87){
+					moverCima();
+				} else if(key == 97 || key == 65){
+					moverEsquerda();
+				} else if(key == 100 || key == 68){
+					moverDireita();
+				} else if(key == 115 || key == 83){
+					moverBaixo();
+				} 
 			}
 
-			function iniciarBoy(){
-				alert("Clicado boy");
-				document.getElementById("girl").style.display = "none";
-				document.getElementById("boy").style.left = "30%";
-				document.getElementById("boy").style.width = "40%";
-				document.getElementById("boy").style.display = "none";
+			function initio(){
+				document.getElementById("telainicial").style.display = "block";
+			}
+
+			function iniciarGame(){
 				document.getElementById("telainicial").style.display = "none";
 				tempo = 0;
+
+				setInterval(checarEspaco, 100);
+				setInterval(moverMulher1, 200);
+				setInterval(moverMulher2, 200);
+				setInterval(moverSenhora, 300);
+				setInterval(moverHomem2, 200);
+				setInterval(checarMorte, 1000);
+				setInterval(checarVitoria, 1000);
+				timer2 = setInterval(checaSumicoMulher2, 5000);
+				timer3 = setInterval(checaSumicoHomem2, 5000);
+				timerCarro = setInterval(moveCarro, 200);
 			}
+
+			function checarVitoria(){
+				if(senhorasAtravessadas == 3 & tempo <= 80){
+					document.getElementById("finish").style.display="block";
+					document.getElementById("next").style.display="block";
+					document.getElementById("game_over_tela").style.display = "block";
+					document.getElementById("menu").style.display = "block";
+
+					document.getElementById("personagem").style.display = "none";
+				}
+			}
+
 
 			function checarMorte(){
 				tempo = tempo+1;
@@ -384,7 +367,9 @@
 				if(personagem.y >= (carro.y-9) & personagem.y <= (carro.y+9)){
 					if(personagem.x >= (carro.x-4) & personagem.x <= (carro.x+4)){
 						personagem.vivo = false;
-						document.getElementById("endgame").style.display = "block";
+						document.getElementById("game_over").style.display="block";
+						document.getElementById("game_over_tela").style.display = "block";
+						document.getElementById("menu").style.display = "block";
 						document.getElementById("personagem").style.display = "none";
 					}
 				}
@@ -392,7 +377,9 @@
 				if(personagem.y >= (carro1.y-9) & personagem.y <= (carro1.y+9)){
 					if(personagem.x >= (carro1.x-4) & personagem.x <= (carro1.x+4)){
 						personagem.vivo = false;
-						document.getElementById("endgame").style.display = "block";
+						document.getElementById("game_over").style.display="block";
+						document.getElementById("game_over_tela").style.display = "block";
+						document.getElementById("menu").style.display = "block";
 						document.getElementById("personagem").style.display = "none";
 					}
 				}
@@ -400,7 +387,9 @@
 				if(personagem.y >= (carro2.y-9) & personagem.y <= (carro2.y+9)){
 					if(personagem.x >= (carro2.x-4) & personagem.x <= (carro2.x+4)){
 						personagem.vivo = false;
-						document.getElementById("endgame").style.display = "block";
+						document.getElementById("game_over").style.display="block";
+						document.getElementById("game_over_tela").style.display = "block";
+						document.getElementById("menu").style.display = "block";
 						document.getElementById("personagem").style.display = "none";
 					}
 				}
@@ -408,7 +397,9 @@
 				if(personagem.y >= (carro3.y-9) & personagem.y <= (carro3.y+9)){
 					if(personagem.x >= (carro3.x-4) & personagem.x <= (carro3.x+4)){
 						personagem.vivo = false;
-						document.getElementById("endgame").style.display = "block";
+						document.getElementById("game_over").style.display="block";
+						document.getElementById("game_over_tela").style.display = "block";
+						document.getElementById("menu").style.display = "block";
 						document.getElementById("personagem").style.display = "none";
 					}
 				}
@@ -416,7 +407,9 @@
 				if(personagem.y >= (carro4.y-9) & personagem.y <= (carro4.y+11)){
 					if(personagem.x >= (carro4.x-4) & personagem.x <= (carro4.x+4)){
 						personagem.vivo = false;
-						document.getElementById("endgame").style.display = "block";
+						document.getElementById("game_over").style.display="block";
+						document.getElementById("game_over_tela").style.display = "block";
+						document.getElementById("menu").style.display = "block";
 						document.getElementById("personagem").style.display = "none";
 					}
 				}
@@ -424,7 +417,9 @@
 				if(personagem.y >= (carro5.y-9) & personagem.y <= (carro5.y+11)){
 					if(personagem.x >= (carro5.x-4) & personagem.x <= (carro5.x+4)){
 						personagem.vivo = false;
-						document.getElementById("endgame").style.display = "block";
+						document.getElementById("game_over").style.display="block";
+						document.getElementById("game_over_tela").style.display = "block";
+						document.getElementById("menu").style.display = "block";
 						document.getElementById("personagem").style.display = "none";
 					}
 				}
@@ -432,7 +427,9 @@
 				if(personagem.y >= (carro6.y-9) & personagem.y <= (carro6.y+11)){
 					if(personagem.x >= (carro6.x-4) & personagem.x <= (carro6.x+4)){
 						personagem.vivo = false;
-						document.getElementById("endgame").style.display = "block";
+						document.getElementById("game_over").style.display="block";
+						document.getElementById("game_over_tela").style.display = "block";
+						document.getElementById("menu").style.display = "block";
 						document.getElementById("personagem").style.display = "none";
 					}
 				}
@@ -440,7 +437,9 @@
 				if(personagem.y >= (carro7.y-9) & personagem.y <= (carro7.y+11)){
 					if(personagem.x >= (carro7.x-4) & personagem.x <= (carro7.x+4)){
 						personagem.vivo = false;
-						document.getElementById("endgame").style.display = "block";
+						document.getElementById("game_over").style.display="block";
+						document.getElementById("game_over_tela").style.display = "block";
+						document.getElementById("menu").style.display = "block";
 						document.getElementById("personagem").style.display = "none";
 					}
 				}
@@ -451,6 +450,11 @@
 					if(mulher1.y < 88){
 					 mulher1.y = mulher1.y+1;
 				 	 document.getElementById("woman").style.top = mulher1.y+"%";
+				 	 if(mulher1.y % 2 == 0){
+						document.getElementById("woman").src = "../img/npc/woman1r.png";
+					 } else {
+					    document.getElementById("woman").src = "../img/npc/woman1l.png";
+				     }
 					}
 
 					if(mulher1.y >= 45 & mulher1.y <= 50){
@@ -483,6 +487,12 @@
 					if(mulher1.y < 86){
 						mulher1.y = mulher1.y+1;
 						document.getElementById("woman").style.top = mulher1.y+"%";
+
+						if(mulher1.y % 2 == 0){
+							document.getElementById("woman").src = "../img/npc/woman1r.png";
+					 	} else {
+					    	document.getElementById("woman").src = "../img/npc/woman1l.png";
+				     	}
 					}
 
 					if(mulher1.y == 86){
@@ -497,7 +507,14 @@
 					if(mulher2.y > 0){
 				 		mulher2.y = mulher2.y-1;
 				 		document.getElementById("woman2").style.top = mulher2.y+"%";
+
+				 		if(mulher2.y % 2 == 0){
+							document.getElementById("woman2").src = "../img/npc/woman2tr.png";
+						} else {
+							document.getElementById("woman2").src = "../img/npc/woman2tl.png";
+						}
 					}
+
 
 					if(mulher2.y == 0){
 						document.getElementById("woman2").style.display = "none";
@@ -510,12 +527,19 @@
 					if(mulher2.y == 0){
 						mulher2.x = 90;
 						document.getElementById("woman2").style.left = mulher2.x+"%";
+						document.getElementById("woman2").src = "../img/npc/woman2.png";
 					}
 
 					if(mulher2.y < 86){
 						mulher2.y = mulher2.y + 1;
 						document.getElementById("woman2").style.display = "block";
 						document.getElementById("woman2").style.top = mulher2.y+"%";
+
+						if(mulher2.y % 2 == 0){
+							document.getElementById("woman2").src = "../img/npc/woman2r.png";
+						} else {
+							document.getElementById("woman2").src = "../img/npc/woman2l.png";
+						}
 					}
 
 					if(mulher2.y == 86){
@@ -546,6 +570,12 @@
 					if(homem.y < 80){
 						homem.y = homem.y+1;
 						document.getElementById("man").style.top = homem.y+"%";
+
+						if(homem.y % 2 == 0){
+							document.getElementById("man").src = "../img/npc/man_frente_direita.png";
+						} else {
+							document.getElementById("man").src = "../img/npc/man_frente_esquerda.png";
+						}
 					}
 
 					if(homem.y > 30 & homem.y < 40){
@@ -563,11 +593,25 @@
 					if(homem.y == 80 & homem.x < 36){
 						homem.x = homem.x+1;
 						document.getElementById("man").style.left = homem.x+"%";
+
+						if(homem.x % 2 == 0){
+							document.getElementById("man").src = "../img/npc/man_lado1.png";
+						} else {
+							document.getElementById("man").src = "../img/npc/man_lado2.png";
+						}
 					}
 
 					if(homem.x == 36 & homem.y > 0){
 						homem.y = homem.y-1;
 						document.getElementById("man").style.top = homem.y+"%";
+
+						document.getElementById("man").src = "../img/npc/man_lado2.png";
+
+						if(homem.y % 2 == 0){
+							document.getElementById("man").src = "../img/npc/man_tras1.png";
+						} else {
+							document.getElementById("man").src = "../img/npc/man_tras2.png";
+						}
 					}
 
 					if(homem.y == 0){
@@ -589,11 +633,23 @@
 				if(homem2.y > 0){
 					homem2.y = homem2.y-1;
 					document.getElementById("man2").style.top=homem2.y+"%";
+
+					if(homem2.y % 2 == 0){
+							document.getElementById("man2").src = "../img/npc/man_tras1.png";
+					} else {
+							document.getElementById("man2").src = "../img/npc/man_tras2.png";
+					}
 				}
 
 				if(homem2.y <= arvore2.y+30 & homem2.y >= arvore2.y+20){
 					homem2.x = homem2.x+1;
 					document.getElementById("man2").style.left = homem2.x+"%";
+
+					if(homem2.x % 2 == 0){
+							document.getElementById("man2").src = "../img/npc/man_lado1.png";
+					} else {
+							document.getElementById("man2").src = "../img/npc/man_lado2.png";
+					}
 				}
 
 				if(homem2.y == 0){
@@ -622,7 +678,20 @@
 					senhora.y = (personagem.y-5);
 				}
 
+				if(senhora.x == 90){
+					senhorasAtravessadas++;
+				}
+
+				if(senhora3.x == 15){
+					senhorasAtravessadas++;
+				}
+
+				if(senhora2.x == 15){
+					senhorasAtravessadas++;
+				}
+
 				if(senhora.x > 70){
+					console.log("Sras. atravessadas: "+senhorasAtravessadas);
 					senhora.x = senhora.x+1;
 					document.getElementById("oldwoman").style.left = senhora.x+"%";
 				}
@@ -671,11 +740,16 @@
 					if(senhora2.atravessando == false){
 						if(senhora2.x <= 45){
 							senhora2.x = senhora2.x-1;
-						document.getElementById("oldwoman2").style.left = senhora2.x+"%";
+							document.getElementById("oldwoman2").style.left = senhora2.x+"%";
 
-							if(senhora3.y >= 57){
+							if(senhora2.y >= 57){
 								document.getElementById("oldwoman2").style.zIndex = 2;
 							}
+
+							if(senhora2.y < 57){
+								document.getElementById("oldwoman2").style.zIndex = 1;
+							}
+
 						}
 					}
 
@@ -764,10 +838,6 @@
 
 			}
 
-			function comecarDireita(){
-				timer = setInterval(moverDireita, 100);
-			}
-
 			function moverEsquerda(){
 
 				if(personagem.x > 0){
@@ -785,9 +855,7 @@
 
 			}
 
-			function comecarEsquerda(){
-				timer = setInterval(moverEsquerda, 100);
-			}
+			
 
 			function moverCima(){
 
@@ -805,9 +873,6 @@
 				}
 			}
 
-			function comecarCima(){
-				timer = setInterval(moverCima, 100);
-			}
 
 			function moverBaixo(){
 
@@ -825,12 +890,8 @@
 				}
 			}
 
-			function comecarBaixo(){
-				timer = setInterval(moverBaixo, 100);
-			}
 
 			function terminar(){
-				clearInterval(timer);
 				document.getElementById("personagem").src = "../img/kaline.png";
 			}
 
@@ -965,32 +1026,40 @@
 
 			}
 
-			setInterval(checarEspaco, 100);
-			setInterval(moverMulher1, 100);
-			setInterval(moverMulher2, 200);
-			setInterval(moverSenhora, 300);
-			setInterval(moverHomem2, 200);
-			setInterval(checarMorte, 1000);
-			timer2 = setInterval(checaSumicoMulher2, 5000);
-			timer3 = setInterval(checaSumicoHomem2, 5000);
-			timerCarro = setInterval(moveCarro, 200);
+			function redMenu(){
+				window.location.href = "../index.html";
+			}
+
+			function voltar(){
+				window.location.href = "game.html";
+			}
+
+			function redProx(){
+				window.location.href = "game2.html";
+			}
+
+
+			
 		</script>
+
+
 		<div id="telainicial">
-			<img src="../img/boy.png" id="boy" onclick="iniciarBoy()">
-			<img src="../img/girl.png" id="girl" onclick="iniciarGirl()">
-			<p id="segundo" onclick="iniciarSegundoEstagio()"></p>
+			<center><h2>Estágio 1</h2></center>
+			<p id="explicacao">Ajude a 3 senhoras de idade atravessarem a rua movimentada em 1 minuto.</p>
+
+			<button id="segundo" onclick="iniciarGame()">Começar</button>
 		</div>
 
 		<div id="tela">
 			<!--Personagens-->
 			<img src="../img/kaline.png" id="personagem">
-			<img src="../img/woman1.png" id="woman">
-			<img src="../img/woman2.png" id="woman2">
-			<img src="../img/old_woman.png" id="oldwoman">
-			<img src="../img/old_woman.png" id="oldwoman2">
-			<img src="../img/old_woman.png" id="oldwoman3">
-			<img src="../img/man_frente_direita.png" id="man">
-			<img src="../img/man2_tras_direita.png" id="man2">
+			<img src="../img/npc/woman1.png" id="woman">
+			<img src="../img/npc/woman2.png" id="woman2">
+			<img src="../img/npc/old_woman.png" id="oldwoman">
+			<img src="../img/npc/old_woman.png" id="oldwoman2">
+			<img src="../img/npc/old_woman.png" id="oldwoman3">
+			<img src="../img/npc/man_frente_direita.png" id="man">
+			<img src="../img/npc/man2_tras_direita.png" id="man2">
 
 			<!--Infraestrutura-->
 			<img src="../img/road.gif" id="rua">
@@ -1011,54 +1080,16 @@
 			<img src="../img/car_baixo.png" id="car6">
 			<img src="../img/car1_baixo.png" id="car7">
 
-			<div id="endgame">
-				<img src="../img/gameover.png" id="gameover">
-				<img src="../img/youwin.png" id="youwin">
-				<img src="../img/home-solid.svg" id="home">
-				<img src="../img/return.svg" id="return">
-				<img src="../img/next.svg" id="next">
+			
+
+			<div id="game_over_tela">
+				<p id="game_over">GAME OVER</p>
+				<p id="finish">YOU WIN</p>
+				<a id="menu" href="../index.html">Menu</a>
+				<a id="next" href="#">Próximo</a>
 			</div>
 		</div>
 
-		<div id="telaSegundoEstagio">
-			<img id="garbage0" src="../img/garbage2.png">
-			<img id="garbage1" src="../img/garbage1.png">
-			<img id="garbage2" src="../img/garbage2.png">
-			<img id="garbage3" src="../img/garbage1.png">
-			<img id="garbage4" src="../img/garbage2.png">
-			<img id="garbage5" src="../img/garbage1.png">
-			<img id="garbage6" src="../img/garbage2.png">
-			<img id="garbage7" src="../img/garbage1.png">
-			<img id="garbage8" src="../img/garbage2.png">
-			<img id="garbage9" src="../img/garbage1.png">
-			<img id="garbage10" src="../img/garbage2.png">
-			<img id="garbage11" src="../img/garbage1.png">
-			<img id="garbage12" src="../img/garbage2.png">
-			<img id="garbage13" src="../img/garbage1.png">
-			<img id="garbage14" src="../img/garbage2.png">
-			<img id="garbage15" src="../img/garbage1.png">
-			<img id="garbage16" src="../img/garbage2.png">
-			<img id="garbage17" src="../img/garbage1.png">
-			<img id="garbage18" src="../img/garbage2.png">
-			<img id="garbage19" src="../img/garbage1.png">
-			<img id="garbage20" src="../img/garbage2.png">
-			<img id="garbage21" src="../img/garbage1.png">
-			<img id="garbage22" src="../img/garbage2.png">
-			<img id="garbage23" src="../img/garbage1.png">
-			<img id="garbage24" src="../img/garbage2.png">
-			<img id="garbage25" src="../img/garbage1.png">
-			<img id="garbage26" src="../img/garbage2.png">
-			<img id="garbage27" src="../img/garbage1.png">
-			<img id="garbage28" src="../img/garbage2.png">
-			<img id="garbage29" src="../img/garbage1.png">
-			<img id="trashcan" src="../img/can.png">
-		</div>
-
-		<!--Teclas Direcionais-->
-			<button id="cima" onmousedown="comecarCima()" onmouseup="terminar()">Cima</button>
-			<button id="baixo" onmousedown="comecarBaixo()" onmouseup="terminar()">Baixo</button>
-			<button id="esquerda" onmousedown="comecarEsquerda()" onmouseup="terminar()"><-</button>
-			<button id="direita" onmousedown="comecarDireita()" onmouseup="terminar()">-></button>
 			<div id="inf">
 				<p id="x">X</p>
 				<p id="x_valor">0</p>
