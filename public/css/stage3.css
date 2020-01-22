@@ -1,0 +1,315 @@
+#explicacao {
+				position: absolute;
+				top: 30%;
+				left: 10%;
+				width: 50%;
+				font-size: 1.3em;
+			}
+
+
+			#personagem {
+				position: absolute;
+				display: block;
+				top: 10%;
+				left: 20%;
+				width: 50px;
+				height: 50px;
+				z-index: 2;
+			}
+
+			#tela, #telainicial, #telaTerceiroEstagio{
+				position: absolute;
+				top: 10px;
+				left: 100px;
+				width: 700px;
+				height: 435px;
+				border-width: 5px;
+				border-color: black;
+				border-style: solid;
+				z-index: 3;
+			}
+
+			#telainicial{
+				display: block;
+				z-index: 3;
+				background-color: grey;
+			}
+
+			
+			#game_over_tela {
+				display: none;
+				position: absolute;
+				top: 5%;
+				left: 15%;
+				height: 400px;
+				width: 60%;
+				border-style: default;
+				border-radius: 10% 10% 10% 10%;
+				background-color: white;
+				z-index: 3;
+			}
+
+			#game_over, #finish {
+				display: none;
+				position: absolute;
+				top: 20%;
+				left: 30%;
+				color: red;
+				z-index: 4;
+				font-size: 3.5em;
+			}
+
+			#personagem {
+				position: absolute;
+				display: block;
+				top: 10%;
+				left: 20%;
+				width: 50px;
+				height: 50px;
+				z-index: 2;
+			}
+
+
+			#finish {
+				left: 20%;
+				color: green;
+			}
+
+			#menu, #next {
+				display: none;
+				position: absolute;
+				top: 75%;
+				left: 20%;
+				font-size: 2.5em;
+			}
+
+			#next {
+				left: 50%;
+			}
+
+
+			/*Segundo estágio*/
+			#segundo{
+				display: block;
+				position: absolute;
+				top: 85%;
+				left: 80%;
+				width: 15%;
+				height: 35px;
+				border-style: default;
+				border-radius: 15% 15% 15% 15%;
+			}
+
+			#telaTerceiroEstagio{
+				display: none;
+				z-index: 3;
+				background-color: #e6e6e6;
+			}
+
+			#grass1, #grass2, #grass3, #grass4, #grass5, #grass6, #grass7, #grass8, #grass9, #grass10, #grass11, #grass12, #grass13, #grass14, #grass15, #grass16, #grass17, #grass18, #grass19, #grass20, #grass21, #grass22, #grass23, #grass24, #grass25, #grass26, #grass27, #grass28, #grass29, #grass30, #grass31, #grass32, #grass33, #grass34, #grass35,#cortador, #ant, #ant2, #ant3 {
+				position: absolute;
+				left: 0%;
+				top: 0%;
+				height: 100px;
+				z-index: -1;
+			}
+
+			#cortador {
+				left: 0%;
+				top: 19%;
+				z-index: 1;
+			}
+
+			#grass2{
+				left: 14.2%;
+			}
+
+			#grass3{
+				left: 28.4%;
+			}
+
+			#grass4{
+				left: 35%;
+			}
+
+			#grass5{
+				left: 49%;
+			}
+
+			#grass6{
+				left: 63%;
+			}
+
+			#grass7 {
+				left: 77%;
+			}
+
+			#grass8, #grass9, #grass10, #grass11, #grass12, #grass13, #grass14 {
+				top: 19%;
+			}
+
+			#grass9{
+				left: 14.2%;
+			}
+
+			#grass10{
+				left: 28.4%;
+			}
+
+			#grass11{
+				left: 35%;
+			}
+
+			#grass12{
+				left: 49%;
+			}
+
+			#grass13{
+				left: 63%;
+			}
+
+			#grass14 {
+				left: 77%;
+			}
+
+			#grass15, #grass16, #grass17, #grass18, #grass19, #grass20, #grass21{
+				top: 38%;
+			}
+
+			#grass16{
+				left: 14.2%;
+			}
+
+			#grass17{
+				left: 28.4%;
+			}
+
+			#grass18{
+				left: 35%;
+			}
+
+			#grass19 {
+				left: 49%;
+			}
+
+			#grass20{
+				left: 63%;
+			}
+
+			#grass21 {
+				left: 77%;
+			}
+
+			#grass22, #grass23, #grass24, #grass25, #grass26, #grass27, #grass28 {
+				top: 57%;
+			}
+
+			#grass23{
+				left: 14.2%;
+			}
+
+			#grass24{
+				left: 28.4%;
+			}
+
+			#grass25{
+				left: 35%;
+			}
+
+			#grass26{
+				left: 49%;
+			}
+
+			#grass27{
+				left: 63%;
+			}
+
+			#grass28 {
+				left: 77%;
+			}
+
+			#grass29, #grass30, #grass31, #grass32, #grass33, #grass34, #grass35, #ant, #ant2, #ant3{
+				top: 77%;
+			}
+
+
+			#grass30{
+				left: 14.2%;
+			}
+
+			#grass31{
+				left: 28.4%;
+			}
+
+			#grass32{
+				left: 35%;
+			}
+
+			#grass33{
+				left: 49%;
+			}
+
+			#grass34{
+				left: 63%;
+			}
+
+			#grass35, #ant, #ant2, #ant3 {
+				left: 77%;
+			}
+
+			#ant {
+				top: 60%;
+			}
+
+			#ant, #ant2, #ant3 {
+				z-index: 0;
+			}
+
+			#ant3 {
+				top: 32%;
+			}
+
+			#start, #final {
+				position: absolute;
+				top: 19%;
+				left: 3%;
+				width: 7%;
+				height: 12px;
+				z-index: 0;
+				background-color: blue;
+			}
+
+			#vida {
+				position: absolute;
+				top: 5%;
+				left: 75%;
+				width: 10%;
+				height: 7%;
+				z-index: 2;
+			}
+
+			#heart {
+				position: absolute;
+				left: 5%;
+				width: 45%;
+			}
+
+			#life {
+				position: absolute;
+				left: 60%;
+				width: 50%;
+				top: -70%;
+				height: 100%;
+				font-size: 1.5em;
+				color: white;
+			}
+
+			#final {
+				top: 87%;
+				left: 81%;
+				background-color:red;
+			}
+
+			#audio {
+				display: none;
+			}

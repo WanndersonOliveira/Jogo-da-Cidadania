@@ -1,0 +1,330 @@
+#explicacao {
+				position: absolute;
+				top: 30%;
+				left: 10%;
+				width: 50%;
+				font-size: 1.3em;
+			}
+
+
+			#personagem {
+				position: absolute;
+				display: block;
+				top: 10%;
+				left: 20%;
+				width: 50px;
+				height: 50px;
+				z-index: 2;
+			}
+
+			#tela, #telainicial, #telaSegundoEstagio{
+				position: absolute;
+				top: 10px;
+				left: 100px;
+				width: 700px;
+				height: 450px;
+				border-width: 5px;
+				border-color: black;
+				border-style: solid;
+				z-index: -1;
+			}
+
+			#telainicial{
+				display: block;
+				z-index: 3;
+				background-color: grey;
+			}
+
+			
+			#game_over_tela {
+				display: none;
+				position: absolute;
+				top: 5%;
+				left: 15%;
+				height: 400px;
+				width: 60%;
+				border-style: default;
+				border-radius: 10% 10% 10% 10%;
+				background-color: white;
+				z-index: 3;
+			}
+
+			#game_over, #finish {
+				display: none;
+				position: absolute;
+				top: 20%;
+				left: 30%;
+				color: red;
+				z-index: 4;
+				font-size: 3.5em;
+			}
+
+			#finish {
+				left: 20%;
+				color: green;
+			}
+
+			#menu, #next {
+				display: none;
+				position: absolute;
+				top: 75%;
+				left: 20%;
+				font-size: 2.5em;
+			}
+
+			#next {
+				left: 50%;
+			}
+
+
+
+			/*Segundo estágio*/
+			#segundo{
+				display: block;
+				position: absolute;
+				top: 85%;
+				left: 80%;
+				width: 15%;
+				height: 35px;
+				border-style: default;
+				border-radius: 15% 15% 15% 15%;
+			}
+
+			#telaSegundoEstagio{
+				display: none;
+				z-index: 3;
+				background-color: #e6e6e6;
+			}
+
+			#garbage0, #garbage1,#garbage2, #garbage3, #garbage4, #garbage5, #garbage6, #garbage7, #garbage8, #garbage9, #garbage10, #garbage11,#garbage12, #garbage13, #garbage14, #garbage15, #garbage16, #garbage17, #garbage18, #garbage19, #garbage20, #garbage21,#garbage22, #garbage23, #garbage24, #garbage25, #garbage26, #garbage27, #garbage28, #garbage29
+			{
+				display: none;
+				position: absolute;
+				top: 50%;
+				left: 20%;
+				width: 30px;
+			}
+
+			#garbage2{
+				top: 60%;
+				left: 25%;
+			}
+
+			#trashcan{
+				position: absolute;
+				left: 10%;
+				top: 80%;
+			}
+
+			#calcada, #calcada1, #calcada2, #calcada3, #calcada4, #calcada5, #calcada6, #calcada7, #calcada8, #calcada9, #calcada10, #calcada11, #calcada12, #calcada13, #calcada14, #calcada15, #calcada16, #calcada17, #calcada18, #calcada19, #calcada20, #calcada21, #calcada22, #calcada23, #calcada24, #calcada25, #calcada26, #calcada27, #calcada28, #calcada29, #calcada30 {
+				position: absolute;
+				left: 0%;
+				top: 0%;
+				height: 100px;
+			}
+
+			#estrada, #estrada2, #estrada3{
+				position: absolute;
+				left: 77%;
+				top: 0%;
+			}
+
+			#estrada2{
+				top: 32%;
+			}
+
+			#estrada3{
+				top: 64%;
+			}
+
+			#calcada1{
+				left: 14.2%;
+			}
+
+			#calcada2{
+				left: 28.4%;
+			}
+
+			#calcada3{
+				left: 35%;
+			}
+
+			#calcada4{
+				left: 49%;
+			}
+
+			#calcada5{
+				left: 63%;
+			}
+
+			#calcada6 {
+				top: 19%;
+			}
+
+			#calcada7 {
+				top: 19%;
+				left: 14.2%;
+			}
+
+			#calcada8 {
+				top: 19%;
+				left: 28.4%;
+			}
+
+			#calcada9 {
+				top: 19%;
+				left: 35%;
+			}
+
+			#calcada10 {
+				top: 19%;
+				left: 49%;
+			}
+
+			#calcada11 {
+				top: 19%;
+				left: 63%;
+			}
+
+			#calcada12 {
+				top: 38%;
+			}
+
+			#calcada13 {
+				top: 38%;
+				left: 14.2%;
+			}
+
+			#calcada14 {
+				top: 38%;
+				left: 28.4%;
+			}
+
+			#calcada15 {
+				top: 38%;
+				left: 35%;
+			}
+
+			#calcada16 {
+				top: 38%;
+				left: 49%;
+			}
+
+			#calcada17 {
+				top: 38%;
+				left: 63%;
+			}
+
+
+			#calcada18 {
+				top: 57%;
+			}
+
+			#calcada19 {
+				top: 57%;
+				left: 14.2%;
+			}
+
+			#calcada20 {
+				top: 57%;
+				left: 28.4%;
+			}
+
+			#calcada21 {
+				top: 57%;
+				left: 35%;
+			}
+
+			#calcada22 {
+				top: 57%;
+				left: 49%;
+			}
+
+			#calcada23 {
+				top: 57%;
+				left: 63%;
+			}
+
+
+			#calcada24 {
+				top: 77%;
+			}
+
+			#calcada25 {
+				top: 77%;
+				left: 14.2%;
+			}
+
+			#calcada26 {
+				top: 77%;
+				left: 28.4%;
+			}
+
+			#calcada27 {
+				top: 77%;
+				left: 35%;
+			}
+
+			#calcada28 {
+				top: 77%;
+				left: 49%;
+			}
+
+			#calcada29 {
+				top: 77%;
+				left: 63%;
+			}
+
+			#coleta_bar, #lixo_bar {
+				position: absolute;
+				top: 30%;   
+				left: 90%;
+				height: 0px;   /*Tamanho máximo: 200px*/
+				width: 5%;
+				background-color: blue;
+			}
+
+			#lixo_bar {
+				left: 80%;
+				background-color: red;
+			}
+
+			#lixo, #coleta {
+				position: absolute;
+				top: 10%;
+				left: 80%;
+				color: yellow;
+				font-size: 1.8em;
+			}
+
+			#coleta {
+				left: 90%;
+			}
+
+			#tempobar {
+				position: absolute;
+				top: 5%;
+				left: 80%;
+				width: 15%;
+				height: 35px;
+			}
+
+			#tempo, #timer {
+				position: absolute;
+				top: -50%;
+				left: 0%;
+				font-size: 1.5em;
+			}
+
+			#timer {
+				left: 75%;
+			}
+
+			#tempo {
+				left: 20%;
+				width: 50px;
+			}
+
+			#audio {
+				display: none;
+			}
