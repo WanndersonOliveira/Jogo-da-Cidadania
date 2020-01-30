@@ -3,14 +3,20 @@
 		<meta charset="utf-8">
 		<title>Fase 3 - Jogo da Cidadania</title>
 	</head>
-	<body onkeypress="checar(event)" onkeyup="terminar()">
+	<body onkeydown="checar(event)" onkeyup="terminar()" bgcolor="#cccccc">
 		<link rel="stylesheet" type="text/css" href="../public/css/stage3.css">
 		<script type="text/javascript" src="../public/js/stage3.js"></script>
 		<div id="telainicial">
-			<center><h2>Estágio 3</h2></center>
-			<p id="explicacao">Guie o cortador de grama até a marca vermelha. Mas cuidado, não toque nas formigas. Teclas direcionais: A,W,S,D</p>
+			<center><h2 id="titulo">Estágio 3</h2></center>
+			<p id="explicacao">
+				Seu vizinho está muito ocupado, e a grama do quintal dele cresceu muito. Então você se ofereceu para ajudá-lo.
+				<br><br>Para isso, guie o cortador de grama até a marca vermelha. Mas cuidado, não toque nas formigas.</p>
+				<i id="msg">Assim como o corpo sem espírito está morto, também a fé sem obras está morta. (Tiago 2:26)</i>
 
 			<button id="segundo" onclick="iniciarTerceiroEstagio()">Começar</button>
+
+			<img src="../img/trophy.png" id="trofeu">
+			<i id="msg_final">Bem-aventurados os misericordiosos, pois obterão misericórdia. (Mateus 5:7)</i>
 		</div>
 
 		
@@ -20,7 +26,6 @@
 				<p id="game_over">GAME OVER</p>
 				<p id="finish">YOU WIN</p>
 				<a id="menu" href="../index.html">Menu</a>
-				<a id="next" href="#">Próximo</a>
 			</div>
 
 			<div id="vida">
@@ -68,6 +73,16 @@
 			<img src="../img/grass3.jpg" id="grass35">
 			<div id="start"></div>
 			<div id="final"></div>
+
+			<img src="../img/calcada.png" id="calcada">
+			<img src="../img/calcada.png" id="calcada2">
+			<img src="../img/calcada.png" id="calcada3">
+			<img src="../img/calcada.png" id="calcada4">
+			<img src="../img/calcada.png" id="calcada5">
+			<img src="../img/calcada.png" id="calcada6">
+			<img src="../img/calcada.png" id="calcada7">
+			<img src="../img/calcada.png" id="calcada8">
+
 
 			<img src="../img/ant/ant.png" id="ant">
 			<img src="../img/ant/ant4.png" id="ant2">

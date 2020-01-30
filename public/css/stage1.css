@@ -6,6 +6,14 @@
 				font-size: 1.3em;
 			}
 
+			#msg {
+				position: absolute;
+				top: 50%;
+				left: 10%;
+				width: 50%;
+				font-size: 1.3em;
+			}
+
 			#segundo{
 				display: block;
 				position: absolute;

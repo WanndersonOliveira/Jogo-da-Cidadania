@@ -30,13 +30,13 @@ var personagem = {x: 20, y: 10, vivo: true};
 			function checar(event){
 				var key = event.which || event.keyCode;
 
-				if(key == 119 || key == 87){
+				if(key == 38){
 					moverCima();
-				} else if(key == 97 || key == 65){
+				} else if(key == 37){
 					moverEsquerda();
-				} else if(key == 100 || key == 68){
+				} else if(key == 39){
 					moverDireita();
-				} else if(key == 115 || key == 83){
+				} else if(key == 40){
 					moverBaixo();
 				} 
 			}
@@ -69,12 +69,16 @@ var personagem = {x: 20, y: 10, vivo: true};
 					document.getElementById("menu").style.display = "block";
 
 					document.getElementById("personagem").style.display = "none";
+
+					setTimeout(redProx,3000);
 				} else if(senhorasAtravessadas < 3 & tempo2 == 0){
 					document.getElementById("game_over").style.display="block";
 					document.getElementById("game_over_tela").style.display = "block";
 					document.getElementById("menu").style.display = "block";
 
 					document.getElementById("personagem").style.display = "none";
+
+					setTimeout(redMenu,3000);
 				}
 			}
 
@@ -743,13 +747,15 @@ var personagem = {x: 20, y: 10, vivo: true};
 			}
 
 			function redMenu(){
-				window.location.href = "../index.html";
+				console.log("redirecionando para o menu...");
+				location.replace("../index.html");
 			}
 
 			function voltar(){
-				window.location.href = "game.html";
+				location.href("game.html");
 			}
 
 			function redProx(){
-				window.location.href = "game2.html";
+				console.log("redirecionando para o próximo estágio...");
+				location.replace("game2.html");
 			}

@@ -3,12 +3,13 @@
 		<meta charset="utf-8">
 		<title>Fase 2 - Jogo da Cidadania</title>
 	</head>
-	<body onkeypress="checar(event)" onkeyup="terminar()">
+	<body onkeydown="checar(event)" onkeyup="terminar()" bgcolor="#cccccc">
 		<link rel="stylesheet" type="text/css" href="../public/css/stage2.css">
 		<script type="text/javascript" src="../public/js/stage2.js"></script>
 		<div id="telainicial">
 			<center><h2>Estágio 2</h2></center>
-			<p id="explicacao">Jogue todo o lixo que está na calçada na lata de lixo. Lembre-se que você deve coletar lixo suficiente para deixar a barra do lixo verde antes do tempo acabar. Você só pode levar 4 papéis por vez. Não pode deixar um papel sequer no chão. Teclas direcionais: A,W,S,D</p>
+			<p id="explicacao">Jogue todo o lixo que está na calçada na lata de lixo. Lembre-se que você deve coletar lixo suficiente para deixar a barra do lixo verde antes do tempo acabar. Você só pode levar 4 papéis por vez. Não pode deixar um papel sequer no chão.<br><br>Use a tecla ESPAÇO para jogar o lixo na lata.</p>
+			<i id="msg">Levem os fardos pesados uns dos outros e, assim, cumpram a lei de Cristo. (Gálatas 6:2)</i>
 
 			<button id="segundo" onclick="iniciarSegundoEstagio()">Começar</button>
 		</div>
@@ -20,7 +21,7 @@
 				<p id="game_over">GAME OVER</p>
 				<p id="finish">YOU WIN</p>
 				<a id="menu" href="../index.html">Menu</a>
-				<a id="next" href="#">Próximo</a>
+				<a id="next" href="game3.html">Próximo</a>
 			</div>
 
 

@@ -10,13 +10,13 @@ var personagem = {x: 20, y: 10, vivo: true};
 			function checar(event){
 				var key = event.which || event.keyCode;
 
-				if(key == 119 || key == 87){
+				if(key == 38){
 					moverCima();
-				} else if(key == 97 || key == 65){
+				} else if(key == 37){
 					moverEsquerda();
-				} else if(key == 100 || key == 68){
+				} else if(key == 39){
 					moverDireita();
-				} else if(key == 115 || key == 83){
+				} else if(key == 40){
 					moverBaixo();
 				} else if(key == 32){
 					jogarNaLixeira();

@@ -12,13 +12,13 @@ var personagem = {x: 20, y: 10, vivo: true, vida: 100};
 			function checar(event){
 				var key = event.which || event.keyCode;
 
-				if(key == 119 || key == 87){
+				if(key == 38){
 					moverCima();
-				} else if(key == 97 || key == 65){
+				} else if(key == 37){
 					moverEsquerda();
-				} else if(key == 100 || key == 68){
+				} else if(key == 39){
 					moverDireita();
-				} else if(key == 115 || key == 83){
+				} else if(key == 40){
 					moverBaixo();
 				}
 			}
@@ -161,12 +161,27 @@ var personagem = {x: 20, y: 10, vivo: true, vida: 100};
 					}
 
 					if(cortador.y > 70){
-						document.getElementById("grass35").src = "../img/sand.png";
+						/*document.getElementById("grass35").src = "../img/sand.png";
 						document.getElementById("game_over_tela").style.display = "block";
 						document.getElementById("finish").style.display = "block";
-						document.getElementById("menu").style.display = "block";
+						document.getElementById("menu").style.display = "block";*/
+
+						document.getElementById("telaTerceiroEstagio").style.display = "none";
+						document.getElementById("msg").style.display = "none";
+						document.getElementById("segundo").style.display = "none";
+						document.getElementById("explicacao").style.display = "none";
+						document.getElementById("telainicial").style.display = "block";
+						document.getElementById("titulo").innerHTML = "Você Venceu!";
+						document.getElementById("trofeu").style.display = "block";
+						document.getElementById("msg_final").style.display = "block";
+
+						setTimeout(redirection, 10000);
 					}
 				}
+			}
+
+			function redirection(){
+				location.replace("../index.html");
 			}
 
 			function iniciarTerceiroEstagio(){
@@ -314,10 +329,18 @@ var personagem = {x: 20, y: 10, vivo: true, vida: 100};
 				}
 
 				if(pontos == 28){
-					document.getElementById("game_over_tela").style.display = "block";
+					/*document.getElementById("game_over_tela").style.display = "block";
 					document.getElementById("finish").style.display = "block";
 					document.getElementById("next").style.display = "block";
-					document.getElementById("menu").style.display = "block";
+					document.getElementById("menu").style.display = "block";*/
+
+					document.getElementById("telaTerceiroEstagio").style.display = "none";
+					document.getElementById("telainicial").style.display = "block";
+					document.getElementById("titulo").innerHTML = "Você Venceu!";
+					document.getElementById("trofeu").style.display = "block";
+					document.getElementById("msg_final").style.display = "block";
+
+					setTimeout(location.replace("../index.html"), 5000);
 				}
 
 				if(personagem.vivo == false){

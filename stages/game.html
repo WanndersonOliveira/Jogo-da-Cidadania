@@ -3,14 +3,15 @@
 		<meta charset="utf-8">
 		<title>Fase 1 - Jogo da Cidadania</title>
 	</head>
-	<body onload="initio()" onkeypress="checar(event)" onkeyup="terminar()">
+	<body onload="initio()" onkeydown="checar(event)" onkeyup="terminar()" bgcolor="#cccccc">
 		<link rel="stylesheet" type="text/css" href="../public/css/stage1.css">
 		<script type="text/javascript" src="../public/js/stage1.js"></script>
 
 
 		<div id="telainicial">
 			<center><h2>Estágio 1</h2></center>
-			<p id="explicacao">Ajude a 3 senhoras de idade atravessarem a rua movimentada em 1 minuto. Teclas direcionais: A,W,S,D</p>
+			<p id="explicacao">Ajude a 3 senhoras de idade atravessarem a rua movimentada em 1 minuto.</p>
+			<i id="msg">Caríssimos, amemo-nos uns aos outros, porque o amor vem de Deus, e todo o que ama é nascido de Deus e conhece a Deus. Aquele que não ama não conhece a Deus, porque Deus é amor. (1 João 4:7,8)</i>
 
 			<button id="segundo" onclick="iniciarGame()">Começar</button>
 		</div>

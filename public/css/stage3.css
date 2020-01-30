@@ -4,6 +4,76 @@
 				left: 10%;
 				width: 50%;
 				font-size: 1.3em;
+				display: block;
+			}
+
+			#calcada {
+				position: absolute;
+				top: 0%;
+				left: 91%;
+				width: 9%;
+			}
+
+			#calcada2{
+				position: absolute;
+				top: 14%;
+				left: 91%;
+				width: 9%;
+			}
+
+			#calcada3 {
+				position: absolute;
+				top: 28%;
+				left: 91%;
+				width: 9%;
+			}
+
+			#calcada4 {
+				position: absolute;
+				top: 42%;
+				left: 91%;
+				width: 9%;
+			}
+
+			#calcada5 {
+				position: absolute;
+				top: 56%;
+				left: 91%;
+				width: 9%;
+			}
+
+			#calcada6 {
+				position: absolute;
+				top: 70%;
+				left: 91%;
+				width: 9%;
+			}
+
+			#calcada7 {
+				position: absolute;
+				top: 84%;
+				left: 91%;
+				width: 9%;
+			}
+
+			#calcada8 {
+				position: absolute;
+				top: 86%;
+				left: 91%;
+				width: 9%;
+			}
+
+			#msg {
+				position: absolute;
+				top: 35%;
+				left: 65%;
+				width: 30%;
+				font-size: 1.3em;
+				display: block;
+			}
+
+			#titulo {
+				display: block;
 			}
 
 
@@ -311,5 +381,21 @@
 			}
 
 			#audio {
+				display: none;
+			}
+
+			#trofeu {
+				position: absolute;
+				width: 150px;
+				left: 40%;
+				top: 20%;
+				display: none;
+			}
+
+			#msg_final {
+				position: absolute;
+				top: 60%;
+				left: 20%;
+				font-size: 1.4em;
 				display: none;
 			}
